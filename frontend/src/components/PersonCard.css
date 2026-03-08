@@ -3,7 +3,7 @@
   border-radius: 10px;
   overflow: hidden;
   text-decoration: none;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .person-card-name {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 5px;
@@ -43,13 +43,13 @@
 }
 
 .person-card-department {
-  color: #e50914;
+  color: var(--primary-color);
   font-size: 0.85rem;
   font-weight: 500;
 }
 
 .person-card-known-for {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.8rem;
   margin-top: 8px;
   overflow: hidden;

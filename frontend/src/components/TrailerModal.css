@@ -24,14 +24,14 @@
   right: 0;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 2rem;
   cursor: pointer;
   transition: color 0.3s;
 }
 
 .trailer-modal-close:hover {
-  color: #e50914;
+  color: var(--primary-color);
 }
 
 .trailer-video-container {

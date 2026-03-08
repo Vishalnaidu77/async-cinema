@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 20px 50px;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  background: var(--bg-primary);
 }
 
 .auth-container {
@@ -13,22 +13,22 @@
 }
 
 .auth-box {
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 15px;
   padding: 40px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid #2a2a2a;
+  border: 1px solid var(--bg-tertiary);
 }
 
 .auth-box h1 {
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   text-align: center;
 }
 
 .auth-box > p {
-  color: #888;
+  color: var(--text-secondary);
   text-align: center;
   margin-bottom: 30px;
 }
@@ -46,7 +46,7 @@
 }
 
 .form-group label {
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -60,28 +60,28 @@
 .input-icon {
   position: absolute;
   left: 15px;
-  color: #666;
+  color: var(--text-muted);
   font-size: 1rem;
 }
 
 .input-wrapper input {
   width: 100%;
   padding: 12px 45px;
-  background: #0f0f0f;
-  border: 2px solid #333;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1rem;
   transition: border-color 0.3s;
 }
 
 .input-wrapper input:focus {
   outline: none;
-  border-color: #e50914;
+  border-color: var(--primary-color);
 }
 
 .input-wrapper input::placeholder {
-  color: #555;
+  color: var(--text-muted);
 }
 
 .toggle-password {
@@ -89,7 +89,7 @@
   right: 15px;
   background: transparent;
   border: none;
-  color: #666;
+  color: var(--text-muted);
   cursor: pointer;
   font-size: 1rem;
   padding: 5px;
@@ -97,13 +97,13 @@
 }
 
 .toggle-password:hover {
-  color: #e50914;
+  color: var(--primary-color);
 }
 
 .auth-btn {
   width: 100%;
   padding: 14px;
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -115,19 +115,19 @@
 }
 
 .auth-btn:hover {
-  background: #f40612;
+  background: var(--primary-hover);
   transform: translateY(-2px);
 }
 
 .auth-footer {
   text-align: center;
-  color: #888;
+  color: var(--text-secondary);
   margin-top: 25px;
   font-size: 0.95rem;
 }
 
 .auth-footer a {
-  color: #e50914;
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
 }

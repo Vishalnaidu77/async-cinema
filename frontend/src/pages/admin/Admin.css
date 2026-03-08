@@ -11,7 +11,7 @@
 
 .admin-header h1 {
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -23,7 +23,7 @@
 }
 
 .admin-header p {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 1.1rem;
 }
 
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 15px;
   padding: 30px;
   text-decoration: none;
@@ -48,7 +48,7 @@
 
 .admin-card:hover {
   transform: translateY(-5px);
-  border-color: #e50914;
+  border-color: var(--primary-color);
   box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
 }
 
@@ -64,23 +64,23 @@
 
 .admin-card-icon svg {
   font-size: 2rem;
-  color: #e50914;
+  color: var(--primary-color);
 }
 
 .admin-card-info h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.3rem;
   margin-bottom: 5px;
 }
 
 .admin-card-info p {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
 .admin-info-section h2 {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 25px;
 }
 
@@ -91,17 +91,17 @@
 }
 
 .stat-card {
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 15px;
   padding: 25px;
 }
 
 .stat-card h4 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.1rem;
   margin-bottom: 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .stat-card ul {
@@ -109,10 +109,10 @@
 }
 
 .stat-card ul li {
-  color: #888;
+  color: var(--text-secondary);
   padding: 8px 0;
   font-size: 0.9rem;
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid var(--bg-tertiary);
 }
 
 .stat-card ul li:last-child {
@@ -134,7 +134,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 25px;
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   border-radius: 8px;
@@ -145,11 +145,11 @@
 }
 
 .add-movie-btn:hover {
-  background: #f40612;
+  background: var(--primary-hover);
 }
 
 .movies-table {
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 15px;
   overflow: hidden;
 }
@@ -166,15 +166,15 @@
 }
 
 .movies-table th {
-  background: #222;
-  color: #fff;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
   font-weight: 600;
   font-size: 0.9rem;
 }
 
 .movies-table td {
-  color: #ccc;
-  border-bottom: 1px solid #333;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .movies-table tr:last-child td {
@@ -182,7 +182,7 @@
 }
 
 .movies-table tr:hover td {
-  background: #222;
+  background: var(--bg-tertiary);
 }
 
 .table-poster {
@@ -218,11 +218,11 @@
 
 .action-btn-small.delete {
   background: rgba(229, 9, 20, 0.2);
-  color: #e50914;
+  color: var(--primary-color);
 }
 
 .action-btn-small.delete:hover {
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -242,7 +242,7 @@
 }
 
 .modal-content {
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 15px;
   padding: 30px;
   width: 100%;
@@ -252,7 +252,7 @@
 }
 
 .modal-content h2 {
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 25px;
 }
 
@@ -269,7 +269,7 @@
 }
 
 .modal-form label {
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 0.9rem;
 }
 
@@ -277,10 +277,10 @@
 .modal-form textarea,
 .modal-form select {
   padding: 12px;
-  background: #0f0f0f;
-  border: 2px solid #333;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1rem;
 }
 
@@ -288,7 +288,7 @@
 .modal-form textarea:focus,
 .modal-form select:focus {
   outline: none;
-  border-color: #e50914;
+  border-color: var(--primary-color);
 }
 
 .modal-form textarea {
@@ -314,21 +314,21 @@
 }
 
 .modal-btn.primary {
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
 }
 
 .modal-btn.primary:hover {
-  background: #f40612;
+  background: var(--primary-hover);
 }
 
 .modal-btn.secondary {
-  background: #333;
-  color: #fff;
+  background: var(--border-color);
+  color: var(--text-primary);
 }
 
 .modal-btn.secondary:hover {
-  background: #444;
+  background: var(--bg-tertiary);
 }
 
 /* Users Table */

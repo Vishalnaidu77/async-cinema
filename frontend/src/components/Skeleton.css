@@ -1,12 +1,12 @@
 .skeleton-card {
   border-radius: 10px;
   overflow: hidden;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
 }
 
 .skeleton-poster {
   aspect-ratio: 2/3;
-  background: #2a2a2a;
+  background: var(--bg-tertiary);
 }
 
 .skeleton-info {
@@ -15,7 +15,7 @@
 
 .skeleton-title {
   height: 18px;
-  background: #2a2a2a;
+  background: var(--bg-tertiary);
   border-radius: 4px;
   margin-bottom: 8px;
   width: 80%;
@@ -23,7 +23,7 @@
 
 .skeleton-year {
   height: 14px;
-  background: #2a2a2a;
+  background: var(--bg-tertiary);
   border-radius: 4px;
   width: 40%;
 }
@@ -31,9 +31,9 @@
 .skeleton-animate {
   background: linear-gradient(
     90deg,
-    #2a2a2a 25%,
-    #3a3a3a 50%,
-    #2a2a2a 75%
+    var(--bg-tertiary) 25%,
+    var(--border-color) 50%,
+    var(--bg-tertiary) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;

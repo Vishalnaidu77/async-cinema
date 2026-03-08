@@ -23,7 +23,7 @@
     to bottom,
     rgba(0, 0, 0, 0.3) 0%,
     rgba(15, 15, 15, 0.9) 60%,
-    #0f0f0f 100%
+    var(--bg-primary) 100%
   );
 }
 
@@ -52,14 +52,14 @@
 
 .movie-title {
   font-size: 2.8rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 15px;
   line-height: 1.2;
 }
 
 .movie-year {
   font-weight: 400;
-  color: #888;
+  color: var(--text-secondary);
   font-size: 2rem;
   margin-left: 10px;
 }
@@ -75,7 +75,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #ccc;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
@@ -93,7 +93,7 @@
 
 .genre-tag {
   background: rgba(229, 9, 20, 0.2);
-  color: #e50914;
+  color: var(--primary-color);
   padding: 8px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -121,29 +121,29 @@
 }
 
 .action-btn.primary {
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
 }
 
 .action-btn.primary:hover {
-  background: #f40612;
+  background: var(--primary-hover);
   transform: scale(1.05);
 }
 
 .action-btn.favorite {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 2px solid #333;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
 }
 
 .action-btn.favorite:hover {
-  border-color: #e50914;
+  border-color: var(--primary-color);
 }
 
 .action-btn.favorite.active {
   background: rgba(229, 9, 20, 0.2);
-  border-color: #e50914;
-  color: #e50914;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .movie-overview {
@@ -153,12 +153,12 @@
 .movie-overview h3,
 .movie-cast h3 {
   font-size: 1.3rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 15px;
 }
 
 .movie-overview p {
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.8;
   font-size: 1.05rem;
 }
@@ -189,14 +189,14 @@
 }
 
 .cast-name {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.9rem;
   font-weight: 500;
   margin-bottom: 3px;
 }
 
 .cast-character {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.8rem;
 }
 

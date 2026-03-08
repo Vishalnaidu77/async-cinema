@@ -28,7 +28,7 @@
 
 .person-info h1 {
   font-size: 2.5rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 20px;
 }
 
@@ -40,14 +40,14 @@
 }
 
 .person-meta span {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
 .person-meta .department {
   display: inline-block;
   background: rgba(229, 9, 20, 0.2);
-  color: #e50914;
+  color: var(--primary-color);
   padding: 5px 15px;
   border-radius: 20px;
   font-weight: 500;
@@ -56,24 +56,24 @@
 
 .person-biography h3 {
   font-size: 1.3rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 15px;
 }
 
 .person-biography p {
-  color: #ccc;
+  color: var(--text-secondary);
   line-height: 1.8;
   font-size: 1rem;
 }
 
 .known-for-section {
   padding-top: 30px;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--border-color);
 }
 
 .known-for-section h2 {
   font-size: 1.8rem;
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 25px;
 }
 
@@ -85,7 +85,7 @@
 }
 
 .error-page h2 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.5rem;
 }
 

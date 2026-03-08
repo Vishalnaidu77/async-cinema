@@ -20,7 +20,7 @@
 }
 
 .history-page .page-header h1 svg {
-  color: #e50914;
+  color: var(--primary-color);
 }
 
 .clear-history-btn {
@@ -29,8 +29,8 @@
   gap: 8px;
   padding: 10px 20px;
   background: transparent;
-  border: 2px solid #e50914;
-  color: #e50914;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
@@ -38,7 +38,7 @@
 }
 
 .clear-history-btn:hover {
-  background: #e50914;
+  background: var(--primary-color);
   color: #fff;
 }
 
@@ -51,7 +51,7 @@
 .history-item {
   display: flex;
   gap: 20px;
-  background: #1a1a1a;
+  background: var(--bg-secondary);
   border-radius: 10px;
   padding: 15px;
   text-decoration: none;
@@ -60,7 +60,7 @@
 
 .history-item:hover {
   transform: translateX(10px);
-  background: #222;
+  background: var(--bg-tertiary);
 }
 
 .history-poster {
@@ -81,19 +81,19 @@
 }
 
 .history-info h3 {
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.1rem;
   margin: 0;
 }
 
 .history-type {
-  color: #e50914;
+  color: var(--primary-color);
   font-size: 0.85rem;
   font-weight: 500;
 }
 
 .history-date {
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.85rem;
 }
 
