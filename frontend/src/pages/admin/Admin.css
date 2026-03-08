@@ -1,0 +1,382 @@
+.admin-page {
+  padding: 100px 50px 50px;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.admin-header {
+  margin-bottom: 40px;
+}
+
+.admin-header h1 {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-header h1 svg {
+  color: #ffd700;
+}
+
+.admin-header p {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.admin-card:hover {
+  transform: translateY(-5px);
+  border-color: #e50914;
+  box-shadow: 0 10px 30px rgba(229, 9, 20, 0.2);
+}
+
+.admin-card-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(229, 9, 20, 0.1);
+  border-radius: 15px;
+}
+
+.admin-card-icon svg {
+  font-size: 2rem;
+  color: #e50914;
+}
+
+.admin-card-info h3 {
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.admin-card-info p {
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.admin-info-section h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.stat-card {
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.stat-card h4 {
+  color: #fff;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.stat-card ul {
+  list-style: none;
+}
+
+.stat-card ul li {
+  color: #888;
+  padding: 8px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #222;
+}
+
+.stat-card ul li:last-child {
+  border-bottom: none;
+}
+
+/* Admin Movies Page */
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.add-movie-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background: #e50914;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.add-movie-btn:hover {
+  background: #f40612;
+}
+
+.movies-table {
+  background: #1a1a1a;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.movies-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.movies-table th,
+.movies-table td {
+  padding: 15px 20px;
+  text-align: left;
+}
+
+.movies-table th {
+  background: #222;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.movies-table td {
+  color: #ccc;
+  border-bottom: 1px solid #333;
+}
+
+.movies-table tr:last-child td {
+  border-bottom: none;
+}
+
+.movies-table tr:hover td {
+  background: #222;
+}
+
+.table-poster {
+  width: 50px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.table-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn-small {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s;
+}
+
+.action-btn-small.edit {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+}
+
+.action-btn-small.edit:hover {
+  background: #ffc107;
+  color: #000;
+}
+
+.action-btn-small.delete {
+  background: rgba(229, 9, 20, 0.2);
+  color: #e50914;
+}
+
+.action-btn-small.delete:hover {
+  background: #e50914;
+  color: #fff;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  border-radius: 15px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-content h2 {
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-form label {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.modal-form input,
+.modal-form textarea,
+.modal-form select {
+  padding: 12px;
+  background: #0f0f0f;
+  border: 2px solid #333;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus,
+.modal-form select:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.modal-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.modal-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.modal-btn.primary {
+  background: #e50914;
+  color: #fff;
+}
+
+.modal-btn.primary:hover {
+  background: #f40612;
+}
+
+.modal-btn.secondary {
+  background: #333;
+  color: #fff;
+}
+
+.modal-btn.secondary:hover {
+  background: #444;
+}
+
+/* Users Table */
+.user-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.user-badge.admin {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+}
+
+.user-badge.user {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+
+.user-badge.banned {
+  background: rgba(229, 9, 20, 0.2);
+  color: #e50914;
+}
+
+@media (max-width: 768px) {
+  .admin-page {
+    padding: 90px 20px 30px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .admin-card {
+    padding: 20px;
+  }
+
+  .movies-table {
+    overflow-x: auto;
+  }
+
+  .movies-table table {
+    min-width: 600px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+}

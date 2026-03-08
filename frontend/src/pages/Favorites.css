@@ -1,0 +1,155 @@
+.favorites-page {
+  padding: 100px 50px 50px;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.favorites-page .page-header h1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.favorites-page .page-header h1 svg {
+  color: #e50914;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.empty-state h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  color: #888;
+  margin-bottom: 25px;
+}
+
+.browse-btn {
+  display: inline-block;
+  background: #e50914;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.browse-btn:hover {
+  background: #f40612;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+}
+
+.favorite-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.favorite-card:hover {
+  transform: translateY(-5px);
+}
+
+.favorite-poster {
+  position: relative;
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+
+.favorite-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.favorite-card:hover .favorite-poster img {
+  transform: scale(1.05);
+}
+
+.favorite-rating {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffd700;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.favorite-info {
+  padding: 15px;
+}
+
+.favorite-info h3 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite-type {
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.remove-btn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-top: 1px solid #333;
+  color: #888;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.remove-btn:hover {
+  background: rgba(229, 9, 20, 0.1);
+  color: #e50914;
+}
+
+@media (max-width: 768px) {
+  .favorites-page {
+    padding: 90px 20px 30px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
