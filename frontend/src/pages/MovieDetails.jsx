@@ -154,7 +154,7 @@ const MovieDetails = () => {
 
   return (
     <div className="cinematic-movie-page">
-      {/* ===== HERO SECTION ===== */}
+      {/* Hero Section */}
       <section className="hero-section" ref={heroRef}>
         <div 
           className="hero-backdrop"
@@ -169,34 +169,15 @@ const MovieDetails = () => {
         </div>
 
         <div className="hero-content">
-          <div className="hero-cast-strip">
-            {mainCast.map((person, index) => (
-              <Link 
-                to={`/person/${person.id}`} 
-                key={person.id} 
-                className="hero-cast-item"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="hero-cast-img-wrapper">
-                  <img
-                    src={person.profile_path ? `${IMAGE_BASE_URL}/w185${person.profile_path}` : PLACEHOLDER_PROFILE}
-                    alt={person.name}
-                  />
-                </div>
-                <span className="hero-cast-name">{person.name?.split(' ')[0]}</span>
-              </Link>
-            ))}
-          </div>
-
-          <h1 className="hero-title" style={{ transform: `translateY(${scrollY * 0.3}px)` }}>
+          <h1 className="hero-title" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
             {displayTitle.toUpperCase()}
           </h1>
 
-          {tagline && <p className="hero-tagline" style={{ transform: `translateY(${scrollY * 0.22}px)` }}>
+          {tagline && <p className="hero-tagline" style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
             {tagline}
           </p>}
 
-          <div className="hero-meta"  style={{ transform: `translateY(${scrollY * 0.2}px)` }}>
+          <div className="hero-meta"  style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
             {vote_average > 0 && (
               <span className="hero-rating">
                 <FaStar /> {vote_average.toFixed(1)}
@@ -212,7 +193,7 @@ const MovieDetails = () => {
             )}
           </div>
 
-          <button className="hero-play-btn" onClick={handlePlayTrailer}  style={{ transform: `translateY(${scrollY * 0.15}px)` }}>
+          <button className="hero-play-btn" onClick={handlePlayTrailer}  style={{ transform: `translateY(${scrollY * 0.1}px)` }}>
             <div className="play-icon-wrapper">
               <FaPlay />
             </div>
