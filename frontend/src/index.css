@@ -6,13 +6,17 @@
   --bg-primary: #0f0f0f;
   --bg-secondary: #1a1a1a;
   --bg-tertiary: #2a2a2a;
+  --sidebar-bg: #141414;
+  --card-bg: #1e1e1e;
   --text-primary: #ffffff;
   --text-secondary: #888888;
   --text-muted: #666666;
-  --border-color: #333333;
+  --border-color: #2a2a2a;
   --success-color: #4caf50;
   --warning-color: #ffc107;
   --error-color: #e50914;
+  --story-fade-light: rgba(26, 26, 26, 0.3);
+  --story-fade-medium: rgba(26, 26, 26, 0.7);
   
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   font-synthesis: none;
@@ -36,12 +40,16 @@ body {
 :root[data-theme="light"] {
   --primary-color: #e50914;
   --primary-hover: #c40812;
-  --bg-primary: #ffffff;
-  --bg-secondary: #f5f5f5;
-  --bg-tertiary: #e0e0e0;
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e8e8e8;
+  --sidebar-bg: #ffffff;
+  --card-bg: #ffffff;
   --text-primary: #1a1a1a;
   --text-secondary: #555555;
   --text-muted: #888888;
-  --border-color: #dddddd;
+  --border-color: #e0e0e0;
+  --story-fade-light: rgba(255, 255, 255, 0.3);
+  --story-fade-medium: rgba(255, 255, 255, 0.7);
 }
 

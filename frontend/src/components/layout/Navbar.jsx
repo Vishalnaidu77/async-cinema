@@ -1,107 +1,113 @@
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
-import { FaSearch, FaBars, FaTimes, FaUser, FaHeart, FaHistory, FaCog, FaMoon } from 'react-icons/fa';
+import { FaSearch, FaBars, FaBell, FaUser, FaMoon, FaCog, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { LuSun } from "react-icons/lu";
 import './Navbar.css';
-import { useContext } from 'react';
 import { themeContextData } from '../../context/ThemeContext';
-import { useEffect } from 'react';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showUserMenu, setShowUserMenu] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { theme, setTheme } = useContext(themeContextData)
-
+  const { theme, setTheme } = useContext(themeContextData);
 
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setSearchQuery('');
-      setIsOpen(false);
     }
   };
 
   const handleLogout = () => {
     dispatch(logout());
+    setShowUserMenu(false);
     navigate('/');
   };
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme)
-    console.log(document.documentElement.getAttribute('data-theme'));
-  }, [theme])
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          <span className="logo-text">AsyncCinema</span>
-        </Link>
+    <nav className="topbar">
+      <div className="topbar-container">
+        {/* Search Bar */}
+        <form className="topbar-search" onSubmit={handleSearch}>
+          
+          <input
+            type="text"
+            placeholder="Search everything"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <FaSearch className="search-icon" />
+        </form>
 
-        <div className={`navbar-menu ${isOpen ? 'active' : ''}`}>
-          <Link to="/" className="nav-link" onClick={() => setIsOpen(false)}>Home</Link>
-          <Link to="/movies" className="nav-link" onClick={() => setIsOpen(false)}>Movies</Link>
-          <Link to="/tv" className="nav-link" onClick={() => setIsOpen(false)}>TV Shows</Link>
-          <Link to="/people" className="nav-link" onClick={() => setIsOpen(false)}>People</Link>
+        {/* Right Section */}
+        <div className="topbar-right">
+          {/* Theme Toggle */}
+          <button 
+            className="topbar-icon-btn"
+            onClick={() => setTheme(theme === "dark" ? 'light' : 'dark')}
+          >
+            {theme === "dark" ? <LuSun /> : <FaMoon />}
+          </button>
 
-          <form className="nav-search" onSubmit={handleSearch}>
-            <input
-              type="text"
-              placeholder="Search..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            <button className='search-btn' type="submit">
-              <FaSearch />
-            </button>
-          </form> 
-        </div>
-        <div className="user">
-          <div className="theme-toggle" onClick={() => {
-            theme === "dark" ? setTheme('light') : setTheme('dark')
-          }}>
-            {theme === "dark" ? <LuSun /> : <FaMoon /> }            
-          </div>
+          {/* Notifications */}
+          <button className="topbar-icon-btn">
+            <FaBell />
+          </button>
+
+          {/* User */}
           {user ? (
-            <div className="nav-user">
-              <Link to="/favorites" className="nav-link" onClick={() => setIsOpen(false)}>
-                <FaHeart /> Favorites
-              </Link>
-              <Link to="/history" className="nav-link" onClick={() => setIsOpen(false)}>
-                <FaHistory /> History
-              </Link>
-              {user.role === 'admin' && (
-                <Link to="/admin" className="nav-link admin-link" onClick={() => setIsOpen(false)}>
-                  <FaCog /> Admin
-                </Link>
+            <div className="topbar-user">
+              <button 
+                className="user-avatar-btn"
+                onClick={() => setShowUserMenu(!showUserMenu)}
+              >
+                <img 
+                  src={`https://ui-avatars.com/api/?name=${encodeURIComponent(user.name)}&background=e50914&color=fff`} 
+                  alt={user.name}
+                  className="user-avatar"
+                />
+              </button>
+              
+              {showUserMenu && (
+                <div className="user-dropdown-menu">
+                  <div className="dropdown-header">
+                    <span className="dropdown-name">{user.name}</span>
+                    <span className="dropdown-email">{user.email}</span>
+                  </div>
+                  <div className="dropdown-divider"></div>
+                  <Link to="/favorites" className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+                    Watchlist
+                  </Link>
+                  <Link to="/history" className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+                    History
+                  </Link>
+                  {user.role === 'admin' && (
+                    <Link to="/admin" className="dropdown-item" onClick={() => setShowUserMenu(false)}>
+                      Admin Panel
+                    </Link>
+                  )}
+                  <div className="dropdown-divider"></div>
+                  <button onClick={handleLogout} className="dropdown-item logout">
+                    Sign Out
+                  </button>
+                </div>
               )}
-              <div className="user-dropdown">
-                <span className="user-name">
-                  <FaUser /> {user.name}
-                </span>
-                <button onClick={handleLogout} className="logout-btn">
-                  Logout
-                </button>
-              </div>
             </div>
           ) : (
-            <div className="nav-auth">
-              <Link to="/login" className="nav-link" onClick={() => setIsOpen(false)}>Login</Link>
-              <Link to="/register" className="nav-link btn-register" onClick={() => setIsOpen(false)}>Sign Up</Link>
-            </div>
+            <Link to="/login" className="topbar-login-btn">
+              Sign In
+            </Link>
           )}
         </div>
-        
-
-        <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <FaTimes /> : <FaBars />}
-        </button>
       </div>
     </nav>
   );

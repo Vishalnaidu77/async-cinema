@@ -7,6 +7,7 @@ import ThemeContext from './context/ThemeContext';
 
 // Layout
 import Navbar from './components/layout/Navbar';
+import Sidebar from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
 
 // Pages
@@ -37,19 +38,21 @@ function App() {
       <Provider store={store}>
         <Router>
           <div className="app">
-          <Navbar />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/movies" element={<Movies />} />
-              <Route path="/tv" element={<TVShows />} />
-              <Route path="/people" element={<People />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/movie/:id" element={<MovieDetails />} />
-              <Route path="/tv/:id" element={<MovieDetails />} />
-              <Route path="/person/:id" element={<PersonDetails />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+          <Sidebar />
+          <div className="app-main">
+            <Navbar />
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/movies" element={<Movies />} />
+                <Route path="/tv" element={<TVShows />} />
+                <Route path="/people" element={<People />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/movie/:id" element={<MovieDetails />} />
+                <Route path="/tv/:id" element={<MovieDetails />} />
+                <Route path="/person/:id" element={<PersonDetails />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
               
               {/* Protected Routes */}
               <Route path="/favorites" element={
@@ -79,9 +82,10 @@ function App() {
                   <AdminUsers />
                 </AdminRoute>
               } />
-            </Routes>
-          </main>
-          <Footer />
+              </Routes>
+            </main>
+            <Footer />
+          </div>
             <ToastContainer
               position="bottom-right"
               autoClose={3000}
