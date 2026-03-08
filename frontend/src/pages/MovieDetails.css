@@ -102,7 +102,6 @@
   margin-top: 60px;
   width: 100%;
   max-width: 100vw;
-  overflow: hidden;
 }
 
 /* Cast strip in hero */
@@ -243,9 +242,6 @@
   margin-left: 3px;
 }
 
-/* ================================================
-   CHARACTER SECTION
-   ================================================ */
 .character-section {
   padding: 100px 0;
   background: var(--bg-primary);

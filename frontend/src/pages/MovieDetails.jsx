@@ -192,9 +192,11 @@ const MovieDetails = () => {
             {displayTitle.toUpperCase()}
           </h1>
 
-          {tagline && <p className="hero-tagline">{tagline}</p>}
+          {tagline && <p className="hero-tagline" style={{ transform: `translateY(${scrollY * 0.22}px)` }}>
+            {tagline}
+          </p>}
 
-          <div className="hero-meta">
+          <div className="hero-meta"  style={{ transform: `translateY(${scrollY * 0.2}px)` }}>
             {vote_average > 0 && (
               <span className="hero-rating">
                 <FaStar /> {vote_average.toFixed(1)}
@@ -210,7 +212,7 @@ const MovieDetails = () => {
             )}
           </div>
 
-          <button className="hero-play-btn" onClick={handlePlayTrailer}>
+          <button className="hero-play-btn" onClick={handlePlayTrailer}  style={{ transform: `translateY(${scrollY * 0.15}px)` }}>
             <div className="play-icon-wrapper">
               <FaPlay />
             </div>

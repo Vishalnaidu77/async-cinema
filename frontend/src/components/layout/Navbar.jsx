@@ -58,11 +58,6 @@ const Navbar = () => {
             {theme === "dark" ? <LuSun /> : <FaMoon />}
           </button>
 
-          {/* Notifications */}
-          <button className="topbar-icon-btn">
-            <FaBell />
-          </button>
-
           {/* User */}
           {user ? (
             <div className="topbar-user">

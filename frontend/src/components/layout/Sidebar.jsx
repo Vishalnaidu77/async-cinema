@@ -20,7 +20,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const [showFollowing, setShowFollowing] = useState(true);
+  const [isHover, setIsHover] = useState(false)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -104,42 +104,6 @@ const Sidebar = () => {
         )}
 
         {/* Following Section */}
-        {user && (
-          <div className="sidebar-section following-section">
-            <div 
-              className="section-label clickable"
-              onClick={() => setShowFollowing(!showFollowing)}
-            >
-              <span>Following</span>
-              <FaChevronDown className={`chevron ${showFollowing ? 'open' : ''}`} />
-            </div>
-            {showFollowing && (
-              <div className="following-list">
-                <div className="following-item">
-                  <div className="following-avatar">
-                    <img src="https://i.pravatar.cc/40?img=1" alt="User" />
-                    <span className="status-dot online"></span>
-                  </div>
-                  <span className="following-name">Movie Fan</span>
-                </div>
-                <div className="following-item">
-                  <div className="following-avatar">
-                    <img src="https://i.pravatar.cc/40?img=2" alt="User" />
-                    <span className="status-dot"></span>
-                  </div>
-                  <span className="following-name">Film Buff</span>
-                </div>
-                <div className="following-item">
-                  <div className="following-avatar">
-                    <img src="https://i.pravatar.cc/40?img=3" alt="User" />
-                    <span className="status-dot online"></span>
-                  </div>
-                  <span className="following-name">Cinema Lover</span>
-                </div>
-              </div>
-            )}
-          </div>
-        )}
       </div>
 
       {/* Bottom Section */}
