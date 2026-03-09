@@ -1,3 +1,4 @@
+import { useContext, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
@@ -11,8 +12,12 @@ import {
   FaTv,
   FaUsers,
   FaCog,
-  FaChevronDown
+  FaChevronDown,
+  FaSearch,
+  FaMoon
 } from 'react-icons/fa';
+import { LuSun } from "react-icons/lu";
+import { themeContextData } from '../../context/ThemeContext';
 import logoIcon from '../../assets/logo.png';
 import './Sidebar.css';
 
@@ -21,6 +26,11 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+  const { theme, setTheme } = useContext(themeContextData);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -50,6 +60,8 @@ const Sidebar = () => {
           <span className="logo-accent">Async</span>
           <span className="logo-text">.CINEMA</span>
         </Link>
+
+       
 
         {/* Main Navigation */}
         <div className="sidebar-section">
@@ -87,6 +99,27 @@ const Sidebar = () => {
             ))}
           </nav>
         </div>
+
+        <div className="sidebar-section">
+          {/* Search Button */}
+          <button 
+            className={`nav-item ${location.pathname === '/search' ? 'active' : ''}`}
+            onClick={() => navigate('/search')}
+          >
+            <FaSearch className="nav-icon" />
+            <span className="nav-label">Search</span>
+          </button>
+
+          {/* Theme Toggle */}
+          <button 
+            className="nav-item"
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          >
+            {theme === 'dark' ? <LuSun className="nav-icon" /> : <FaMoon className="nav-icon" />}
+            <span className="nav-label">{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+          </button>
+        </div>
+        
 
         {/* Admin Section */}
         {user?.role === 'admin' && (

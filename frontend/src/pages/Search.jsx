@@ -33,20 +33,29 @@ const Search = () => {
   const { searchResults, isLoading, page, totalPages, searchQuery } = useSelector(
     (state) => state.movies
   );
-  const [query, setQuery] = useState(searchParams.get('q') || '');
+  const urlQuery = searchParams.get('q') || '';
+  const [query, setQuery] = useState(urlQuery);
   const [currentPage, setCurrentPage] = useState(1);
 
   const debouncedQuery = useDebounce(query, 500);
+
+  // Sync query state when URL parameter changes (e.g., from navbar search)
+  useEffect(() => {
+    setQuery(urlQuery);
+  }, [urlQuery]);
 
   useEffect(() => {
     if (debouncedQuery) {
       dispatch(resetMovies());
       dispatch(search({ query: debouncedQuery, page: 1 }));
       dispatch(setSearchQuery(debouncedQuery));
-      setSearchParams({ q: debouncedQuery });
+      // Only update URL if it differs to avoid loops
+      if (debouncedQuery !== urlQuery) {
+        setSearchParams({ q: debouncedQuery });
+      }
       setCurrentPage(1);
     }
-  }, [debouncedQuery, dispatch, setSearchParams]);
+  }, [debouncedQuery, dispatch, setSearchParams, urlQuery]);
 
   const fetchMore = () => {
     const nextPage = currentPage + 1;

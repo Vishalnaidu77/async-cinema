@@ -6,7 +6,6 @@ import store from './store/store';
 import ThemeContext from './context/ThemeContext';
 
 // Layout
-import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
 import Footer from './components/layout/Footer';
 
@@ -40,7 +39,6 @@ function AppContent() {
     <div className="app">
       <Sidebar />
       <div className="app-main">
-        {currentPath !== "/login" && currentPath !== "/register" && <Navbar />}
               <main className="main-content">
                 <Routes>
                   <Route path="/" element={<Home />} />
