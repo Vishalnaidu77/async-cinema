@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getTrending, getPopular, getMovies, getTVShows } from '../store/slices/movieSlice';
+import tmdbService from '../services/tmdbService';
 import MovieCard from '../components/MovieCard';
 import { MovieGridSkeleton } from '../components/Skeleton';
 import { FaPlay, FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -14,6 +15,7 @@ const Home = () => {
   const { trending, popular, movies, tvShows, isLoading } = useSelector((state) => state.movies);
   const { favorites } = useSelector((state) => state.favorites);
   const [featuredIndex, setFeaturedIndex] = useState(0);
+  const [featuredTagline, setFeaturedTagline] = useState('');
 
   useEffect(() => {
     dispatch(getTrending());
@@ -24,6 +26,22 @@ const Home = () => {
 
   const featuredMovie = trending[featuredIndex] || trending[0];
   const featuredThumbnails = trending.slice(0, 5);
+
+  // Fetch tagline when featured movie changes
+  useEffect(() => {
+    const fetchTagline = async () => {
+      if (featuredMovie?.id) {
+        try {
+          const mediaType = featuredMovie.media_type || 'movie';
+          const details = await tmdbService.getDetails(featuredMovie.id, mediaType);
+          setFeaturedTagline(details.tagline || '');
+        } catch (error) {
+          setFeaturedTagline('');
+        }
+      }
+    };
+    fetchTagline();
+  }, [featuredMovie?.id, featuredMovie?.media_type]);
 
   const handlePrevFeatured = () => {
     setFeaturedIndex((prev) => (prev > 0 ? prev - 1 : featuredThumbnails.length - 1));
@@ -49,6 +67,10 @@ const Home = () => {
                 )) || featuredMovie.name}
               </h1>
               
+              {featuredTagline && (
+                <p className="featured-tagline">{featuredTagline}</p>
+              )}
+              
               <div className="featured-meta">
                 <span className="meta-rating">
                   <FaStar className="star-icon" />
@@ -72,13 +94,28 @@ const Home = () => {
                 Watch
               </Link>
 
-              <div className="friends-watching">
-                <div className="friend-avatars">
-                  <img src="https://i.pravatar.cc/30?img=1" alt="Friend" />
-                  <img src="https://i.pravatar.cc/30?img=2" alt="Friend" />
-                  <img src="https://i.pravatar.cc/30?img=3" alt="Friend" />
+              {/* Thumbnail Carousel */}
+              <div className="featured-thumbnails">
+                <button className="thumb-nav prev" onClick={handlePrevFeatured}>
+                  <FaChevronLeft />
+                </button>
+                <div className="thumb-list">
+                  {featuredThumbnails.map((movie, index) => (
+                    <div 
+                      key={movie.id}
+                      className={`thumb-item ${index === featuredIndex ? 'active' : ''}`}
+                      onClick={() => setFeaturedIndex(index)}
+                    >
+                      <img 
+                        src={`${IMAGE_BASE_URL}/w300${movie.backdrop_path || movie.poster_path}`}
+                        alt={movie.title || movie.name}
+                      />
+                    </div>
+                  ))}
                 </div>
-                <span>+5 friends are watching</span>
+                <button className="thumb-nav next" onClick={handleNextFeatured}>
+                  <FaChevronRight />
+                </button>
               </div>
             </div>
 
@@ -91,69 +128,9 @@ const Home = () => {
             >
               <div className="featured-overlay"></div>
             </div>
-
-            {/* Thumbnail Carousel */}
-            <div className="featured-thumbnails">
-              <button className="thumb-nav prev" onClick={handlePrevFeatured}>
-                <FaChevronLeft />
-              </button>
-              <div className="thumb-list">
-                {featuredThumbnails.map((movie, index) => (
-                  <div 
-                    key={movie.id}
-                    className={`thumb-item ${index === featuredIndex ? 'active' : ''}`}
-                    onClick={() => setFeaturedIndex(index)}
-                  >
-                    <img 
-                      src={`${IMAGE_BASE_URL}/w300${movie.backdrop_path || movie.poster_path}`}
-                      alt={movie.title || movie.name}
-                    />
-                  </div>
-                ))}
-              </div>
-              <button className="thumb-nav next" onClick={handleNextFeatured}>
-                <FaChevronRight />
-              </button>
-            </div>
           </div>
         </section>
       )}
-
-      {/* Parties Section - Popular Movies */}
-      <section className="content-section parties-section">
-        <div className="section-header">
-          <h2>Parties</h2>
-          <span className="section-indicator"></span>
-        </div>
-        {isLoading ? (
-          <MovieGridSkeleton count={4} />
-        ) : (
-          <div className="parties-grid">
-            {popular.slice(0, 4).map((movie) => (
-              <Link 
-                key={movie.id} 
-                to={`/movie/${movie.id}`}
-                className="party-card"
-              >
-                <div className="party-poster">
-                  <img 
-                    src={`${IMAGE_BASE_URL}/w300${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                </div>
-                <div className="party-info">
-                  <h3>{movie.title}</h3>
-                  <p>{movie.genre_ids?.slice(0, 2).map(id => getGenreName(id)).join(', ') || 'Movie'}</p>
-                </div>
-                <div className="party-watchers">
-                  <img src="https://i.pravatar.cc/24?img=4" alt="Watcher" />
-                  <img src="https://i.pravatar.cc/24?img=5" alt="Watcher" />
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </section>
 
       {/* Continue Watching Section */}
       <section className="content-section">

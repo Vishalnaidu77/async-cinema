@@ -320,16 +320,16 @@
 .mobile-menu-toggle {
   display: none;
   position: fixed;
-  top: 15px;
-  left: 15px;
+  top: 10px;
+  left: 7px;
   z-index: 200;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   border-radius: 10px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   align-items: center;
   justify-content: center;
