@@ -1,6 +1,7 @@
 .movie-card {
   position: relative;
   border-radius: 10px;
+  width: 100%;
   overflow: hidden;
   text-decoration: none;
   background: var(--bg-secondary);

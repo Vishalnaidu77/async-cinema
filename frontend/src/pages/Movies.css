@@ -1,8 +1,8 @@
 .movies-page {
   padding: 100px 50px 50px;
-  max-width: 1600px;
-  margin: 0 auto;
+  width: 100%;
   min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .page-header {
@@ -22,8 +22,8 @@
 
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
 }
 
 .end-message {

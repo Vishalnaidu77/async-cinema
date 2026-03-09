@@ -1,4 +1,3 @@
-import { useState,useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
@@ -13,6 +12,7 @@ import {
   FaCog,
   FaChevronDown
 } from 'react-icons/fa';
+import logoIcon from '../../assets/logo.png';
 import './Sidebar.css';
 
 const Sidebar = () => {
@@ -20,7 +20,6 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const [isHover, setIsHover] = useState(false)
 
   const handleLogout = () => {
     dispatch(logout());
@@ -46,6 +45,7 @@ const Sidebar = () => {
       <div className="sidebar-content">
         {/* Logo */}
         <Link to="/" className="sidebar-logo">
+          <img src={logoIcon} alt="Logo" className="logo-icon" />
           <span className="logo-accent">Async</span>
           <span className="logo-text">.CINEMA</span>
         </Link>
@@ -63,7 +63,7 @@ const Sidebar = () => {
                   className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
                 >
                   <item.icon className="nav-icon" />
-                  <span>{item.label}</span>
+                  <span className="nav-label">{item.label}</span>
                 </Link>
               );
             })}
@@ -81,7 +81,7 @@ const Sidebar = () => {
                 className={`nav-item ${isActive(item.path) ? 'active' : ''}`}
               >
                 <item.icon className="nav-icon" />
-                <span>{item.label}</span>
+                <span className="nav-label">{item.label}</span>
               </Link>
             ))}
           </nav>
@@ -97,7 +97,7 @@ const Sidebar = () => {
                 className={`nav-item ${location.pathname.startsWith('/admin') ? 'active' : ''}`}
               >
                 <FaCog className="nav-icon" />
-                <span>Dashboard</span>
+                <span className="nav-label">Dashboard</span>
               </Link>
             </nav>
           </div>
@@ -111,11 +111,11 @@ const Sidebar = () => {
         {user ? (
           <button onClick={handleLogout} className="logout-btn">
             <FaSignOutAlt className="nav-icon" />
-            <span>Log Out</span>
+            <span className="nav-label">Log Out</span>
           </button>
         ) : (
           <Link to="/login" className="login-btn">
-            <span>Sign In</span>
+            <span className="nav-label">Sign In</span>
           </Link>
         )}
       </div>
