@@ -55,7 +55,7 @@ const Login = () => {
       <div className="auth-container">
         <div className="auth-box">
           <h1>Welcome Back</h1>
-          <p>Sign in to continue to MovieFlix</p>
+          <p>Sign in to continue to AsyncCinema</p>
 
           <form onSubmit={onSubmit} className="auth-form">
             <div className="form-group">

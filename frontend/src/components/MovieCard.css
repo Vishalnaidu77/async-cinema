@@ -1,16 +1,38 @@
 .movie-card {
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px;
   width: 100%;
   overflow: hidden;
   text-decoration: none;
   background: var(--bg-secondary);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  perspective: 800px;
+  border: 1px solid var(--border-color);
 }
 
 .movie-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(229, 9, 20, 0.2);
+  transform: translateY(-8px);
+}
+
+/* Side-specific border glow effects */
+.movie-card.hover-top {
+  border-top-color: var(--primary-color);
+  /* box-shadow: 0 -8px 20px rgba(229, 9, 20, 0.5), 0 -4px 10px rgba(229, 9, 20, 0.3); */
+}
+
+.movie-card.hover-bottom {
+  border-bottom-color: var(--primary-color);
+  /* box-shadow: 0 8px 20px rgba(229, 9, 20, 0.5), 0 4px 10px rgba(229, 9, 20, 0.3); */
+}
+
+.movie-card.hover-left {
+  border-left-color: var(--primary-color);
+  /* box-shadow: -8px 0 20px rgba(229, 9, 20, 0.5), -4px 0 10px rgba(229, 9, 20, 0.3); */
+}
+
+.movie-card.hover-right {
+  border-right-color: var(--primary-color);
+  /* box-shadow: 8px 0 20px rgba(229, 9, 20, 0.5), 4px 0 10px rgba(229, 9, 20, 0.3); */
 }
 
 .movie-card-poster {
@@ -36,10 +58,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.349);
   display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -49,10 +69,16 @@
 }
 
 .view-details {
+  position: absolute;
   color: #fff;
   background: var(--primary-color);
-  padding: 10px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  bottom: 5%;
+  left: 5%;
   font-weight: 600;
   font-size: 0.9rem;
 }

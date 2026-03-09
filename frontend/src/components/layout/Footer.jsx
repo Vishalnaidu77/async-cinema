@@ -31,18 +31,11 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="footer-section">
-          <h4>Connect</h4>
-          <div className="social-links">
-            <a href="#" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-            <a href="#" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-            <a href="#" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-          </div>
-        </div>
+        
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} MovieFlix. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} AsyncCinema. All rights reserved.</p>
         <p>Data provided by <a href="https://www.themoviedb.org" target="_blank" rel="noopener noreferrer">TMDB</a></p>
       </div>
     </footer>
