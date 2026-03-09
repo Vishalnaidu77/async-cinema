@@ -76,7 +76,7 @@ const Navbar = () => {
                 <div className="user-dropdown-menu">
                   <div className="dropdown-header">
                     <span className="dropdown-name">{user.name}</span>
-                    <span className="dropdown-email">{user.email}</span>
+                    <span className="dropdown-email">{user.email.length > 25 ? user.email.slice(0, 25) + '...' : user.email}</span>
                   </div>
                   <div className="dropdown-divider"></div>
                   <Link to="/favorites" className="dropdown-item" onClick={() => setShowUserMenu(false)}>

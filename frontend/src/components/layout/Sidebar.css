@@ -3,13 +3,17 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 65px;
+  width: 75px;
   background: var(--sidebar-bg);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
   z-index: 100;
   transition: all 0.3s ease;
+}
+
+.sidebar::-webkit-scrollbar{
+  display: none;
 }
 
 .sidebar:hover {
@@ -19,7 +23,6 @@
 /* Hide text elements when sidebar is collapsed */
 .sidebar .logo-text,
 .sidebar .logo-accent,
-.sidebar .section-label,
 .sidebar .nav-label {
   opacity: 0;
   visibility: hidden;
