@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
+import { MdPerson } from "react-icons/md";
 import { 
   FaCompass, 
   FaHeart, 
@@ -115,6 +116,7 @@ const Sidebar = () => {
           </button>
         ) : (
           <Link to="/login" className="login-btn">
+            <div className="login-icon"><MdPerson/></div>
             <span className="nav-label">Sign In</span>
           </Link>
         )}

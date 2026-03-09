@@ -1,0 +1,31 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-block: 20px;
+}
+
+.filter {
+    border: 1px solid var(--text-muted);
+    background: transparent;
+    color: var(--text-primary);
+    padding: 0.35rem 0.7rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter:hover {
+    border-color: var(--primary-hover);
+}
+
+.filter.active {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+}
+
+@media (max-width: 768px) {
+    .filters {
+        gap: 8px;
+    }
+}

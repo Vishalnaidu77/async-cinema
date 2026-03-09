@@ -1,27 +1,53 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getMovies, resetMovies } from '../store/slices/movieSlice';
+import {
+  discoverByGenre,
+  getGenres,
+  getMovies,
+  resetMovies,
+  setSelectedGenre,
+} from '../store/slices/movieSlice';
 import MovieCard from '../components/MovieCard';
 import Loader from '../components/Loader';
 import { MovieGridSkeleton } from '../components/Skeleton';
 import './Movies.css';
+import GenreFilter from '../components/GenreFilter';
 
 const Movies = () => {
   const dispatch = useDispatch();
-  const { movies, isLoading, page, totalPages } = useSelector((state) => state.movies);
+  const { movies, isLoading, totalPages, movieGenres, selectedMovieGenre } = useSelector((state) => state.movies);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     dispatch(resetMovies());
+    dispatch(setSelectedGenre({ mediaType: 'movie', genreId: null }));
+    dispatch(getGenres('movie'));
     dispatch(getMovies(1));
     setCurrentPage(1);
   }, [dispatch]);
 
+  const handleGenreSelect = (genreId) => {
+    dispatch(resetMovies());
+    dispatch(setSelectedGenre({ mediaType: 'movie', genreId }));
+    setCurrentPage(1);
+
+    if (genreId === null) {
+      dispatch(getMovies(1));
+      return;
+    }
+
+    dispatch(discoverByGenre({ mediaType: 'movie', genreId, page: 1 }));
+  };
+
   const fetchMoreMovies = () => {
     const nextPage = currentPage + 1;
     if (nextPage <= totalPages) {
-      dispatch(getMovies(nextPage));
+      if (selectedMovieGenre === null) {
+        dispatch(getMovies(nextPage));
+      } else {
+        dispatch(discoverByGenre({ mediaType: 'movie', genreId: selectedMovieGenre, page: nextPage }));
+      }
       setCurrentPage(nextPage);
     }
   };
@@ -32,7 +58,11 @@ const Movies = () => {
         <h1>Movies</h1>
         <p>Discover the latest and greatest movies</p>
       </div>
-
+      <GenreFilter
+        genres={movieGenres}
+        selectedGenre={selectedMovieGenre}
+        onSelectGenre={handleGenreSelect}
+      />
       {isLoading && movies.length === 0 ? (
         <MovieGridSkeleton count={12} />
       ) : (

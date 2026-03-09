@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -32,60 +32,60 @@ import AdminRoute from './components/AdminRoute';
 
 import './App.css';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
   return (
-    <ThemeContext>
-      <Provider store={store}>
-        <Router>
-          <div className="app">
-          <Sidebar />
-          <div className="app-main">
-            <Navbar />
-            <main className="main-content">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/movies" element={<Movies />} />
-                <Route path="/tv" element={<TVShows />} />
-                <Route path="/people" element={<People />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/movie/:id" element={<MovieDetails />} />
-                <Route path="/tv/:id" element={<MovieDetails />} />
-                <Route path="/person/:id" element={<PersonDetails />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-              
-              {/* Protected Routes */}
-              <Route path="/favorites" element={
-                <ProtectedRoute>
-                  <Favorites />
-                </ProtectedRoute>
-              } />
-              <Route path="/history" element={
-                <ProtectedRoute>
-                  <History />
-                </ProtectedRoute>
-              } />
-              
-              {/* Admin Routes */}
-              <Route path="/admin" element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              } />
-              <Route path="/admin/movies" element={
-                <AdminRoute>
-                  <AdminMovies />
-                </AdminRoute>
-              } />
-              <Route path="/admin/users" element={
-                <AdminRoute>
-                  <AdminUsers />
-                </AdminRoute>
-              } />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
+    <div className="app">
+      <Sidebar />
+      <div className="app-main">
+        {currentPath !== "/login" && currentPath !== "/register" && <Navbar />}
+              <main className="main-content">
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/movies" element={<Movies />} />
+                  <Route path="/tv" element={<TVShows />} />
+                  <Route path="/people" element={<People />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/movie/:id" element={<MovieDetails />} />
+                  <Route path="/tv/:id" element={<MovieDetails />} />
+                  <Route path="/person/:id" element={<PersonDetails />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                
+                {/* Protected Routes */}
+                <Route path="/favorites" element={
+                  <ProtectedRoute>
+                    <Favorites />
+                  </ProtectedRoute>
+                } />
+                <Route path="/history" element={
+                  <ProtectedRoute>
+                    <History />
+                  </ProtectedRoute>
+                } />
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={
+                  <AdminRoute>
+                    <AdminDashboard />
+                  </AdminRoute>
+                } />
+                <Route path="/admin/movies" element={
+                  <AdminRoute>
+                    <AdminMovies />
+                  </AdminRoute>
+                } />
+                <Route path="/admin/users" element={
+                  <AdminRoute>
+                    <AdminUsers />
+                  </AdminRoute>
+                } />
+                </Routes>
+              </main>
+              {currentPath !== "/login" && currentPath !== "/register" && <Footer />}
+            </div>
             <ToastContainer
               position="bottom-right"
               autoClose={3000}
@@ -99,6 +99,15 @@ function App() {
               theme="dark"
             />
           </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeContext>
+      <Provider store={store}>
+        <Router>
+          <AppContent />
         </Router>
       </Provider>
     </ThemeContext>

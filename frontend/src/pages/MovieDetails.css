@@ -16,19 +16,7 @@
   padding: 0 50px;
 }
 
-.section-label {
-  font-size: 0.75rem;
-  letter-spacing: 4px;
-  color: var(--primary-color);
-  font-weight: 600;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 10px;
-}
 
-/* ================================================
-   HERO SECTION
-   ================================================ */
 .hero-section {
   position: relative;
   height: 100vh;

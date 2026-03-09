@@ -6,6 +6,10 @@ const initialState = {
   popular: [],
   movies: [],
   tvShows: [],
+  movieGenres: [],
+  tvGenres: [],
+  selectedMovieGenre: null,
+  selectedTVGenre: null,
   people: [],
   searchResults: [],
   currentMovie: null,
@@ -53,6 +57,27 @@ export const getTVShows = createAsyncThunk('movies/getTVShows', async (page = 1,
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+// Get genres by media type
+export const getGenres = createAsyncThunk('movies/getGenres', async (mediaType = 'movie', thunkAPI) => {
+  try {
+    return await tmdbService.getGenres(mediaType);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
+
+// Discover media by genre
+export const discoverByGenre = createAsyncThunk(
+  'movies/discoverByGenre',
+  async ({ mediaType = 'movie', genreId, page = 1 }, thunkAPI) => {
+    try {
+      return await tmdbService.discoverByGenre(mediaType, genreId, page);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 // Get people
 export const getPeople = createAsyncThunk('movies/getPeople', async (page = 1, thunkAPI) => {
@@ -103,6 +128,14 @@ const movieSlice = createSlice({
     },
     setSearchQuery: (state, action) => {
       state.searchQuery = action.payload;
+    },
+    setSelectedGenre: (state, action) => {
+      const { mediaType, genreId } = action.payload;
+      if (mediaType === 'tv') {
+        state.selectedTVGenre = genreId;
+      } else {
+        state.selectedMovieGenre = genreId;
+      }
     },
     clearCurrentMovie: (state) => {
       state.currentMovie = null;
@@ -175,6 +208,49 @@ const movieSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      // Genres
+      .addCase(getGenres.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getGenres.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (action.meta.arg === 'tv') {
+          state.tvGenres = action.payload.genres || [];
+        } else {
+          state.movieGenres = action.payload.genres || [];
+        }
+      })
+      .addCase(getGenres.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      // Discover by genre
+      .addCase(discoverByGenre.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(discoverByGenre.fulfilled, (state, action) => {
+        state.isLoading = false;
+        const { mediaType = 'movie', page = 1 } = action.meta.arg;
+        if (mediaType === 'tv') {
+          if (page === 1) {
+            state.tvShows = action.payload.results;
+          } else {
+            state.tvShows = [...state.tvShows, ...action.payload.results];
+          }
+        } else if (page === 1) {
+          state.movies = action.payload.results;
+        } else {
+          state.movies = [...state.movies, ...action.payload.results];
+        }
+        state.page = action.payload.page;
+        state.totalPages = action.payload.total_pages;
+      })
+      .addCase(discoverByGenre.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       // People
       .addCase(getPeople.pending, (state) => {
         state.isLoading = true;
@@ -233,5 +309,5 @@ const movieSlice = createSlice({
   },
 });
 
-export const { resetMovies, setSearchQuery, clearCurrentMovie } = movieSlice.actions;
+export const { resetMovies, setSearchQuery, setSelectedGenre, clearCurrentMovie } = movieSlice.actions;
 export default movieSlice.reducer;
