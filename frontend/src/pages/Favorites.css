@@ -143,13 +143,76 @@
   color: var(--primary-color);
 }
 
+@media (max-width: 1024px) {
+  .favorites-page {
+    padding: 90px 30px 40px;
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .favorites-page {
-    padding: 90px 20px 30px;
+    padding: 80px 20px 30px;
+  }
+
+  .favorites-page .page-header h1 {
+    font-size: 1.8rem;
+    gap: 10px;
   }
 
   .favorites-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+  }
+
+  .empty-state {
+    padding: 60px 20px;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+  }
+
+  .browse-btn {
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-page {
+    padding: 75px 15px 20px;
+  }
+
+  .favorites-page .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .favorites-grid {
+    gap: 10px;
+  }
+
+  .favorite-info {
+    padding: 10px;
+  }
+
+  .favorite-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .favorite-type {
+    font-size: 0.8rem;
+  }
+
+  .remove-btn {
+    padding: 10px;
+    font-size: 0.85rem;
   }
 }

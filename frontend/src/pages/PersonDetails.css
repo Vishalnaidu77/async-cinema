@@ -89,6 +89,20 @@
   font-size: 1.5rem;
 }
 
+@media (max-width: 1024px) {
+  .person-details-page {
+    padding: 90px 30px 40px;
+  }
+
+  .person-content {
+    gap: 40px;
+  }
+
+  .person-profile {
+    width: 250px;
+  }
+}
+
 @media (max-width: 992px) {
   .person-content {
     flex-direction: column;
@@ -108,18 +122,92 @@
   .person-meta {
     align-items: center;
   }
+
+  .person-biography {
+    text-align: center;
+  }
+
+  .person-biography h3 {
+    text-align: left;
+  }
+
+  .person-biography p {
+    text-align: left;
+  }
 }
 
 @media (max-width: 768px) {
   .person-details-page {
-    padding: 90px 20px 30px;
+    padding: 80px 20px 30px;
   }
 
   .person-info h1 {
     font-size: 1.6rem;
   }
 
+  .person-biography h3 {
+    font-size: 1.1rem;
+  }
+
   .person-biography p {
     font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .known-for-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .person-meta span {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .person-details-page {
+    padding: 75px 15px 20px;
+  }
+
+  .person-profile {
+    width: 160px;
+  }
+
+  .person-profile img {
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  .person-info h1 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+  }
+
+  .person-meta {
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .person-meta .department {
+    padding: 4px 12px;
+    font-size: 0.85rem;
+  }
+
+  .person-biography h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+
+  .person-biography p {
+    font-size: 0.9rem;
+  }
+
+  .known-for-section {
+    padding-top: 20px;
+  }
+
+  .known-for-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
   }
 }

@@ -53,3 +53,77 @@ body {
   --story-fade-medium: rgba(255, 255, 255, 0.7);
 }
 
+/* ================================================
+   GLOBAL RESPONSIVE UTILITIES
+   ================================================ */
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 1025px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+@media (min-width: 769px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .responsive-text {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-text {
+    font-size: 0.85em;
+  }
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  .tap-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+  .responsive-padding {
+    padding: 15px;
+  }
+
+  .responsive-margin {
+    margin: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-padding {
+    padding: 10px;
+  }
+
+  .responsive-margin {
+    margin: 10px;
+  }
+}
+

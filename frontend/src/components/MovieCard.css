@@ -90,12 +90,54 @@
   font-size: 0.85rem;
 }
 
+@media (max-width: 768px) {
+  .movie-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .movie-card-rating {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    top: 8px;
+    right: 8px;
+  }
+
+  .view-details {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+}
+
 @media (max-width: 480px) {
+  .movie-card {
+    border-radius: 8px;
+  }
+
+  .movie-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.15);
+  }
+
   .movie-card-title {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .movie-card-year {
+    font-size: 0.8rem;
   }
 
   .movie-card-info {
-    padding: 10px;
+    padding: 10px 8px;
+  }
+
+  .movie-card-rating {
+    padding: 3px 6px;
+    font-size: 0.75rem;
+    border-radius: 4px;
+    gap: 3px;
+  }
+
+  .movie-card-overlay {
+    display: none;
   }
 }

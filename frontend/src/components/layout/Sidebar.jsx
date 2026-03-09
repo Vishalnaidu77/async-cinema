@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../store/slices/authSlice';
@@ -14,7 +14,9 @@ import {
   FaCog,
   FaChevronDown,
   FaSearch,
-  FaMoon
+  FaMoon,
+  FaBars,
+  FaTimes
 } from 'react-icons/fa';
 import { LuSun } from "react-icons/lu";
 import { themeContextData } from '../../context/ThemeContext';
@@ -27,13 +29,32 @@ const Sidebar = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { theme, setTheme } = useContext(themeContextData);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [location.pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileOpen]);
+
   const handleLogout = () => {
     dispatch(logout());
+    setIsMobileOpen(false);
     navigate('/');
   };
 
@@ -52,14 +73,30 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-content">
-        {/* Logo */}
-        <Link to="/" className="sidebar-logo">
-          <img src={logoIcon} alt="Logo" className="logo-icon" />
-          <span className="logo-accent">Async</span>
-          <span className="logo-text">.CINEMA</span>
-        </Link>
+    <>
+      {/* Mobile Menu Toggle */}
+      <button 
+        className="mobile-menu-toggle"
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
+      >
+        {isMobileOpen ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Mobile Overlay */}
+      <div 
+        className={`sidebar-overlay ${isMobileOpen ? 'visible' : ''}`}
+        onClick={() => setIsMobileOpen(false)}
+      />
+
+      <aside className={`sidebar ${isMobileOpen ? 'open' : ''}`}>
+        <div className="sidebar-content">
+          {/* Logo */}
+          <Link to="/" className="sidebar-logo">
+            <img src={logoIcon} alt="Logo" className="logo-icon" />
+            <span className="logo-accent">Async</span>
+            <span className="logo-text">.CINEMA</span>
+          </Link>
 
        
 
@@ -155,6 +192,7 @@ const Sidebar = () => {
         )}
       </div>
     </aside>
+    </>
   );
 };
 

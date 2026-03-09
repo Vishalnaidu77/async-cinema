@@ -140,12 +140,58 @@
   text-decoration: underline;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .auth-page {
+    padding: 0 15px 40px;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .auth-container {
+    max-width: 100%;
+  }
+
   .auth-box {
-    padding: 30px 20px;
+    padding: 35px 25px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding-top: 60px;
+  }
+
+  .auth-box {
+    padding: 25px 20px;
   }
 
   .auth-box h1 {
     font-size: 1.6rem;
+  }
+
+  .auth-box > p {
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+  }
+
+  .form-group label {
+    font-size: 0.85rem;
+  }
+
+  .input-wrapper input {
+    padding: 10px 40px;
+    font-size: 0.95rem;
+  }
+
+  .auth-btn {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .auth-footer {
+    font-size: 0.9rem;
+    margin-top: 20px;
   }
 }

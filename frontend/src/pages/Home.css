@@ -517,12 +517,81 @@
   .section-header h2 {
     font-size: 1.2rem;
   }
+
+  .watch-btn {
+    padding: 12px 30px;
+    font-size: 0.9rem;
+  }
+
+  .featured-meta {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .meta-rating {
+    padding: 5px 10px;
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .featured-section {
+    padding: 10px;
+    padding-top: 75px;
+  }
+
+  .featured-content {
+    min-height: 350px;
+    border-radius: 15px;
+  }
+
+  .featured-info {
+    padding: 20px;
+  }
+
+  .featured-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
   .movie-slider,
   .continue-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .content-section {
+    padding: 15px 10px;
+  }
+
+  .section-header {
+    margin-bottom: 15px;
+    gap: 10px;
+  }
+
+  .section-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .view-all {
+    font-size: 0.8rem;
+  }
+
+  .party-card {
+    padding: 12px;
     gap: 12px;
+  }
+
+  .party-poster {
+    width: 50px;
+    height: 65px;
+  }
+
+  .party-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .friends-watching {
+    display: none;
   }
 }

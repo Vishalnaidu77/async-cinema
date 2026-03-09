@@ -83,17 +83,62 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 1024px) {
+  .search-page {
+    padding: 90px 30px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .search-page {
-    padding: 90px 20px 30px;
+    padding: 80px 20px 30px;
+  }
+
+  .search-header {
+    margin-bottom: 25px;
   }
 
   .search-header h1 {
     font-size: 1.8rem;
+    margin-bottom: 15px;
   }
 
   .search-input-container input {
     font-size: 1rem;
     padding: 12px 15px 12px 45px;
+  }
+
+  .search-icon {
+    left: 15px;
+    font-size: 1rem;
+  }
+
+  .placeholder-icon {
+    font-size: 3rem;
+  }
+
+  .no-results h2,
+  .search-placeholder h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-page {
+    padding: 75px 15px 20px;
+  }
+
+  .search-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .search-input-container input {
+    font-size: 0.95rem;
+    padding: 10px 12px 10px 40px;
+  }
+
+  .no-results,
+  .search-placeholder {
+    padding: 50px 15px;
   }
 }

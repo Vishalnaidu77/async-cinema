@@ -97,13 +97,25 @@
   font-size: 0.85rem;
 }
 
+@media (max-width: 1024px) {
+  .history-page {
+    padding: 90px 30px 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .history-page {
-    padding: 90px 20px 30px;
+    padding: 80px 20px 30px;
   }
 
   .history-page .page-header {
     flex-direction: column;
+    gap: 15px;
+  }
+
+  .history-page .page-header h1 {
+    font-size: 1.8rem;
+    gap: 10px;
   }
 
   .clear-history-btn {
@@ -116,11 +128,57 @@
     gap: 15px;
   }
 
+  .history-item:hover {
+    transform: translateX(5px);
+  }
+
   .history-poster {
     width: 60px;
   }
 
   .history-info h3 {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .history-page {
+    padding: 75px 15px 20px;
+  }
+
+  .history-page .page-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .clear-history-btn {
+    padding: 8px 15px;
+    font-size: 0.85rem;
+  }
+
+  .history-item {
+    padding: 10px;
+    gap: 12px;
+    border-radius: 8px;
+  }
+
+  .history-poster {
+    width: 50px;
+  }
+
+  .history-poster img {
+    border-radius: 6px;
+  }
+
+  .history-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .history-type,
+  .history-date {
+    font-size: 0.8rem;
+  }
+
+  .history-list {
+    gap: 10px;
   }
 }

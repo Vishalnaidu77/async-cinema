@@ -355,28 +355,130 @@
   color: #e50914;
 }
 
+@media (max-width: 1024px) {
+  .admin-page {
+    padding: 90px 30px 40px;
+  }
+
+  .admin-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .admin-page {
-    padding: 90px 20px 30px;
+    padding: 80px 20px 30px;
+  }
+
+  .admin-header {
+    margin-bottom: 25px;
   }
 
   .admin-header h1 {
     font-size: 1.8rem;
+    gap: 10px;
+  }
+
+  .admin-header p {
+    font-size: 0.95rem;
+  }
+
+  .admin-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .admin-card {
     padding: 20px;
   }
 
+  .admin-card-icon {
+    width: 55px;
+    height: 55px;
+  }
+
+  .admin-card-icon svg {
+    font-size: 1.6rem;
+  }
+
+  .admin-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-movie-btn {
+    justify-content: center;
+  }
+
   .movies-table {
     overflow-x: auto;
+    border-radius: 10px;
   }
 
   .movies-table table {
     min-width: 600px;
   }
 
+  .movies-table th,
+  .movies-table td {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
   .modal-content {
-    padding: 20px;
+    padding: 25px 20px;
+    max-height: 85vh;
+  }
+
+  .modal-content h2 {
+    font-size: 1.4rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 75px 15px 20px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .admin-card {
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .admin-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+  }
+
+  .admin-card-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .admin-card-info p {
+    font-size: 0.85rem;
+  }
+
+  .modal-content {
+    padding: 20px 15px;
+  }
+
+  .modal-form input,
+  .modal-form textarea,
+  .modal-form select {
+    padding: 10px;
+    font-size: 0.95rem;
   }
 }

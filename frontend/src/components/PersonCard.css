@@ -57,12 +57,35 @@
   white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+  .person-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
 @media (max-width: 480px) {
+  .person-card {
+    border-radius: 8px;
+  }
+
+  .person-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(229, 9, 20, 0.15);
+  }
+
   .person-card-name {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .person-card-department {
+    font-size: 0.8rem;
+  }
+
+  .person-card-known-for {
+    font-size: 0.75rem;
   }
 
   .person-card-info {
-    padding: 10px;
+    padding: 10px 8px;
   }
 }

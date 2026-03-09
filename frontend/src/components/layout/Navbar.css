@@ -221,6 +221,11 @@
     left: 0;
   }
 
+  .sidebar:hover ~ .app-main .topbar,
+  .sidebar:hover + .app-main .topbar {
+    left: 0;
+  }
+
   .topbar-nav-arrows {
     display: none;
   }
@@ -228,22 +233,77 @@
   .topbar-search {
     max-width: 400px;
   }
+
+  .topbar-container {
+    padding-left: 60px;
+  }
 }
 
 @media (max-width: 768px) {
   .topbar {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   .topbar-container {
-    gap: 15px;
+    height: 60px;
+    gap: 10px;
+    padding-left: 50px;
   }
 
   .topbar-search {
     max-width: none;
+    padding: 0 12px;
+    border-radius: 20px;
+  }
+
+  .topbar-search input {
+    padding: 10px 0;
+    font-size: 0.85rem;
   }
 
   .search-settings {
     display: none;
+  }
+
+  .topbar-icon-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .user-avatar {
+    width: 36px;
+    height: 36px;
+  }
+
+  .topbar-login-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar-container {
+    padding-left: 45px;
+  }
+
+  .topbar-right {
+    gap: 8px;
+  }
+
+  .topbar-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .user-dropdown-menu {
+    right: -10px;
+    width: 200px;
   }
 }
