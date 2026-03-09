@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaGithub, FaTwitter, FaInstagram } from 'react-icons/fa';
+import logoIcon from '../../assets/logo.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -7,7 +8,11 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3 className="footer-logo">AsyncCinema</h3>
+          <Link to="/" className="footer-logo">
+            <img src={logoIcon} alt="Logo" className="footer-logo-icon" />
+            <span className="footer-logo-accent">Async</span>
+            <span className="footer-logo-text">.CINEMA</span>
+          </Link>
           <p>Your ultimate destination for movies and TV shows. Discover, watch, and enjoy!</p>
         </div>
 
